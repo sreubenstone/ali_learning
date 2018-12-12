@@ -1,25 +1,30 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import List from './list'
+
+const server_response_dogs = ['Rex', 'billy', 'wangy', 'shlongy', 'pritchard']
 
 class App extends Component {
+
+  state = {
+    on: false
+  }
+
+  updateStateData = () => {
+    this.setState({ on: !this.state.on })
+  }
+
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div >
+        {(this.state.on === true) ? <div> Sports </div> : null}
+        <h1> Dogs I can Walk </h1>
+        <List dogs={server_response_dogs} funky={this.updateStateData} >
+          List of Dogs
+        </List>
+
       </div>
     );
   }
